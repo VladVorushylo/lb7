@@ -1,12 +1,16 @@
-import matplotlib.pyplot as plt
-import pandas as pd
+from numpy import *
+import pylab
 
-
-t = 'Этот мир прогнил'
-list = list(t)
-x = pd.DataFrame({'letters': list})
-x['num'] = 1
-x = x.groupby('letters').sum().sort_values('num', ascending=False) / len(x)
-
-plt.bar(x.index, x.num, width=0.5)
-plt.show()
+t = str('Нет такого понятия, как «судьба». Это всего лишь сочетание нескольких обстоятельств')
+def count_letters():
+    abetka = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж',
+              'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о',
+              'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц',
+              'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'
+              ]
+    for i in range(0, len(abetka)):
+        x = [abetka[i]]
+        y = [t.count(abetka[i])]
+        pylab.bar(x, y)
+    pylab.show()
+count_letters()
